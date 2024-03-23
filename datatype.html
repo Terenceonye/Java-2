@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DATA TYPE DETECTION</title>
+</head>
+<body>
+    
+<div id="content">
+
+</div>
+
+<script>
+    const fullName = prompt('Enter your Full Name');
+    const cohort = prompt('Enter your cohort');
+    let userInput = prompt('Type an Input and I will tell you its Data Type');
+
+    let dataType;
+
+    if (userInput === '') {
+        dataType = 'undefined';
+    } else if (!isNaN(userInput)) {
+        dataType = 'number';
+    } else {
+        dataType = 'string';
+    }
+
+    const content = document.getElementById('content');
+
+    content.innerHTML =
+        `<h2>WELCOME</h2>
+    <p>Your name is <strong>${fullName}</strong> from <strong>${cohort}</strong></p>
+    <p>Your input of "<strong>${userInput}</strong>" is of Data Type: <strong>${dataType}</strong></p>
+    `;
+</script>
+
+</body>
+</html>

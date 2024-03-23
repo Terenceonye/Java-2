@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        li {
+            word-spacing: 10px;
+            letter-spacing: 2px;
+            padding: 10px
+        }
+    </style>
+</head>
+<body>
+
+<div >
+    <ul id="record"></ul>
+
+
+    <br><br>
+    <button id="delete">DELETE MEMBER</button>
+</div>
+
+    <script>
+        let deletMember = document.getElementById( 'delete' );
+        const recordList = document.querySelector('#record');
+
+
+        let cohort11 = [
+            {username: 'Mayor', passcode: 'Pass-68377'},
+            {username: 'Francis', passcode: 'Pass-78770'},
+            {username: 'ossymax', passcode: 'Pass-40258'},
+            {username: 'frankchuks', passcode: 'Pass-16348'},
+            {username: 'blesroyal', passcode: 'Pass-40258'}
+        ]
+
+
+        updateRecord();
+
+        //this function only displays the record in a list format on the page
+        function updateRecord(){
+            recordList.innerHTML = '';
+            cohort11.forEach((person, index) => {
+            recordList.innerHTML += `<li>ID ${index} - ${person.username} - [${person.passcode}]</li>`;
+            })
+        }
+
+        //this funtion deletes a record based on the index
+        function deletePerson(person){
+            cohort11.splice(person, 1)
+        }
+
+        //this listens to a click on the button and runs the delete function and updates the record aswell 
+        deletMember.addEventListener('click', ()=>{
+            let memberId = prompt('Enter the Student Id to delete');
+            if (memberId > cohort11.length || isNaN(memberId) || memberId === ''){
+                alert("Invalid Input");
+                memberId = prompt('Enter the Student Id to delete');
+            }else{ 
+            deletePerson(memberId)
+            updateRecord();
+            }
+        })
+
+        
+    </script>
+    
+</body>
+</html>

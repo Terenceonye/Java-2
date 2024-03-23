@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUIZ APP</title>
+</head>
+<body>
+    <div>QUIZ APP</div>
+    <p id="uname"></p>
+    <p id="cohortN"></p>
+    <p id="scoredisplay"></p>
+
+    <script>
+        const uname = document.getElementById('uname');
+        const cohortN = document.getElementById("cohort");
+        const scoreDisplay = document.getElementById('scoredisplay')
+
+        const userName =  prompt("Please enter your Username:");
+        if(userName == null || userName==""){
+            alert('Username cannot be empty');
+            userName = prompt("Please enter your Username:");
+        }
+
+        const cohort = prompt('Please enter your Cohort');
+        const passcode = prompt('Please type in your Passcode');
+
+        const questionsAnswers  = [
+            {q:"Nnamdi Azikiwe", a:"1904"},
+            {q:"Shehu Shagari", a:"1925"},
+            {q: "Aguiyi-Ironsi", a: "1924" },
+        ];
+        
+        let score = 0;
+
+        questionsAnswers.forEach((question, index)=> {
+            let asnswer = prompt(`What year was ${question.q}, born?`);
+            if (asnswer === question.a) {
+                score += (1 / questionsAnswers.length) * 100;
+               
+                score = score.toFixed(2);                
+            }         
+        });
+
+        // Display results on the page
+        uname.textContent = `Welcome ${userName} with Passcode: ${passcode}`;
+        scoreDisplay.innerHTML = `Your Score is ${score} out of ${questionsAnswers.length} questions`;  
+    </script>
+</body>
+</html>

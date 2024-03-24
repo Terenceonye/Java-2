@@ -26,9 +26,20 @@
         const passcode = prompt('Please type in your Passcode');
 
         const questionsAnswers  = [
-            {q:"Nnamdi Azikiwe", a:"1904"},
-            {q:"Shehu Shagari", a:"1925"},
-            {q: "Aguiyi-Ironsi", a: "1924" },
+            { q: "Nnamdi Azikiwe", a: "1904" },
+            { q: "Sir Abubakar Tafawa Balewa", a: "1912" },
+            { q: "General Yakubu Gowon", a: "1934" },
+            { q: "General Murtala Mohammed", a: "1938" },
+            { q: "General Olusegun Obasanjo", a: "1937" },
+            { q: "Alhaji Shehu Shagari", a: "1925" },
+            { q: "General Ibrahim Babangida", a: "1941" },
+            { q: "Ernest Shonekan", a: "1936" },
+            { q: "General Sani Abacha", a: "1943" },
+            { q: "General Abdulsalami Abubakar", a: "1942" },
+            { q: "Alhaji Umaru Musa Yar'Adua", a: "1951" },
+            { q: "Dr. Goodluck Jonathan", a: "1957" },
+            { q: "Muhammadu Buhari", a: "1942" },
+            { q: "Bola Ahmed Tinubu", a: "1952" } 
         ];
         
         let score = 0;
@@ -36,15 +47,18 @@
         questionsAnswers.forEach((question, index)=> {
             let asnswer = prompt(`What year was ${question.q}, born?`);
             if (asnswer === question.a) {
+                alert("Correct!")
                 score += (1 / questionsAnswers.length) * 100;
                
-                score = score.toFixed(2);                
-            }         
+                score = Number(score.toFixed(2));                
+            }else {
+                alert(`Incorrect! The correct answer is ${question.a}`);
+            }     
         });
 
         // Display results on the page
-        uname.textContent = `Welcome ${userName} with Passcode: ${passcode}`;
-        scoreDisplay.innerHTML = `Your Score is ${score} out of ${questionsAnswers.length} questions`;  
+        uname.textContent = `Welcome ${userName} of ${cohort} with Passcode: ${passcode}`;
+        scoreDisplay.innerHTML = `Your Score is ${Math.round(score)}% out of ${questionsAnswers.length} questions`;  
     </script>
 </body>
 </html>
